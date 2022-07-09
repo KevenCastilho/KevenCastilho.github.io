@@ -24,6 +24,9 @@
 			overflow: hidden;
 			text-overflow: ellipsis;
 		}
+		.gitcont {
+			font-family: cursive;
+		}
 		</style>
 		<script type="module">
 		// var url = "https://api.github.com/users/KevenCastilho/repos";
@@ -47,6 +50,7 @@
 
 				var gitLista = document.getElementById('gitLista');
 				var indicadores = document.getElementById('indicadores');
+				var gitcont = document.getElementById('gitcont');
 
 				for(var i = 0; i < jsonGit.length; i++){
 					tempArray = jsonGit[i];
@@ -91,9 +95,8 @@
 						indicadores.innerHTML = itens_indicadores;
 						gitLista.innerHTML = itens;
 						conta_repos++;
-						// console.log(conta_item);
 				}
-				console.log(conta_repos);
+				gitcont.innerHTML = conta_repos;
 			}
 		})
 		</script>
@@ -550,7 +553,7 @@
 							</div>
 						</div>
 
-						<span class="topico">Meu Github</span></br></br>
+						<span class="topico">Meu Github <span class="gitcont">| Repositórios:</span> <span class="gitcont" id="gitcont"></span></span></br></br>
 						<div class="row">
 							<div class="col-12 mb-2">
 								<div id="githubLista" class="carousel slide" data-bs-ride="carousel">
