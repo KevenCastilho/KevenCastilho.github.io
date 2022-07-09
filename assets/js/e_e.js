@@ -22,7 +22,7 @@ function compArrays(arr1,arr2){
 	for(var i=0;i<arr1.length;i++){
 		if(arr1[i] == arr2[i]){
 			check = "OK";
-			console.log("arr1[i]: "+arr1[i]+"arr2[i]: "+arr2[i]);
+			//console.log("arr1[i]: "+arr1[i]+"arr2[i]: "+arr2[i]);
 		} else {
 			check = "NOK";
 			break;
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 
 		cbm.push(letra);
-		console.log(cbm);
+		//console.log(cbm);
 		lastKeyTime = currentTime;
 
 		switch(cbm.length) {
@@ -87,19 +87,19 @@ document.addEventListener('DOMContentLoaded', () => {
 				vid.style.backgroundImage = " url('assets/images/triforce.gif')";
 				vid.style.opacity = "0.2";
 				setTimeout(() => {
-					vid.style.opacity = "0.4"; console.log(vid);
+					vid.style.opacity = "0.4"; //console.log(vid);
 					setTimeout(() => {
-						vid.style.opacity = "0.6"; console.log(vid);
+						vid.style.opacity = "0.6"; //console.log(vid);
 							setTimeout(() => {
-								vid.style.opacity = "0.8"; console.log(vid);
+								vid.style.opacity = "0.8"; //console.log(vid);
 								setTimeout(() => {
-									vid.style.opacity = "1"; console.log(vid);
+									vid.style.opacity = "1"; //console.log(vid);
 									setTimeout(() => {
-										vid.style.opacity = "0.8"; console.log(vid);
+										vid.style.opacity = "0.8"; //console.log(vid);
 										setTimeout(() => {
-											vid.style.opacity = "0.6"; console.log(vid);
+											vid.style.opacity = "0.6"; //console.log(vid);
 											setTimeout(() => {
-												vid.style.opacity = "0.4"; console.log(vid);
+												vid.style.opacity = "0.4"; //console.log(vid);
 												setTimeout(() => {
 													vid.style.opacity = "1";
 													vid.style.backgroundImage = " url('assets/images/anima.png')";
