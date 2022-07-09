@@ -51,7 +51,11 @@
 				for(var i = 0; i < jsonGit.length; i++){
 					tempArray = jsonGit[i];
 						titulo = tempArray['name'];
-						desc = tempArray['description'];
+						if(tempArray['description'] == null){
+							desc = 'Nenhuma descrição disponivel.'
+						} else {
+							desc = tempArray['description'];
+						}
 						link = tempArray['html_url'];
 						data_cria = tempArray['created_at'];
 						var data_cria_separa = data_cria.split('T');
