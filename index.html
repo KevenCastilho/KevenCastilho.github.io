@@ -100,7 +100,7 @@
 			}
 		})
 		</script>
-
+		<script src="https://smtpjs.com/v3/smtp.js"></script>
 		<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
 		<script src="assets/js/fontawesome.js"></script>
@@ -154,7 +154,7 @@
 						</ul>
 
 						<div class="modal fade" id="contato" tabindex="-1" aria-labelledby="contato" aria-hidden="true">
-							<form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+							<form class="row contact_form" action="#" method="post" id="contactForm" novalidate="novalidate">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -166,27 +166,27 @@
 												<label class="contato-label text-info">Identificação</label>
 											</div>
 											<div class="col-12 mb-3">
-												<input name="nome" type="text" class="form-control" placeholder="Digite seu nome" />
+												<input id="nome" name="nome" type="text" class="form-control" placeholder="Digite seu nome" />
 											</div>
 
 											<div class="col-12">
 												<label class="contato-label text-info">Contato</label>
 											</div>
 											<div class="col-12 mb-3">
-												<input name="email" type="mail" class="form-control" placeholder="Digite seu email" />
+												<input id="contato" name="email" type="mail" class="form-control" placeholder="Digite seu email" />
 											</div>
 
 											<div class="col-12">
 												<label class="contato-label text-info">Mensagem</label>
 											</div>
 											<div class="col-12 mb-3">
-												<textarea name="mensagem" class="form-control" placeholder="Digite sua mensagem" rows="4"></textarea>
+												<textarea id="mensagem" name="mensagem" class="form-control" placeholder="Digite sua mensagem" rows="4"></textarea>
 											</div>
 										</div>
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sair</button>
-										<button type="submit" class="btn btn-dark">Enviar</button>
+										<button type="button" class="btn btn-dark" onclick="sendEmail()">Enviar</button>
 									</div>
 								</div>
 							</div>
@@ -660,6 +660,24 @@
 	});
 	function contato(){
 		contato_modal.toggle();
+	}
+	</script>
+	<script type="text/javascript">
+	function sendEmail() {
+		var email = document.getElementById('contato').value;
+		var nome = document.getElementById('nome').value;
+		var titulo = 'Contato de '+nome;
+		var mensagem = document.getElementById('mensagem').value;
+		Email.send({
+			SecureToken: 'fbeb429b-99d0-4697-a386-686cb1bb9605',
+			From: email,
+			To: 'kevencastilho10@gmail.com',
+			Body: mensagem,
+			Subject: titulo,
+		})
+		.then(function (message) {
+			alert("mail sent successfully")
+		});
 	}
 	</script>
 	</body>
