@@ -42,6 +42,9 @@
 	.bg-java{
 		background-color: #ed8b00;
 	}
+	.bg-site{
+		background-color: #439595;
+	}
 	.card-left{
 		line-height: 45px;
 	}
@@ -57,86 +60,19 @@
 		color: #5CC4C4;
 	}
 	.hid{
-		display: hidden;
+		display: none !important;
+	}
+	.svg {
+		padding: 5px 20px;
+		background-color: #439595;
+		font-family: monospace;
+		text-transform: initial;
 	}
 	</style>
-	<script type="module">
-	// var url = "https://api.github.com/users/KevenCastilho/repos";
-	var git;
-	$.ajax({
-		url: 'https://api.github.com/users/KevenCastilho/repos',
-		beforeSend: function(xhr) {
-		}, success: function(jsonGit){
-			var tempArray;
-			var itens = '';
-			var itens_indicadores = '';
-
-			var titulo;
-			var desc;
-			var link;
-			var data_cria;
-
-			var conta_item = 1;
-			var conta_repos = 0;
-			var conta_indicadores = 0;
-
-			var gitLista = document.getElementById('gitLista');
-			var indicadores = document.getElementById('indicadores');
-			var gitcont = document.getElementById('gitcont');
-
-			for(var i = 0; i < jsonGit.length; i++){
-				tempArray = jsonGit[i];
-				titulo = tempArray['name'];
-				if(tempArray['description'] == null){
-					desc = 'Nenhuma descrição disponivel.'
-				} else {
-					desc = tempArray['description'];
-				}
-				link = tempArray['html_url'];
-				data_cria = tempArray['created_at'];
-				var data_cria_separa = data_cria.split('T');
-				var data_solo = data_cria_separa[0];
-				var data_separa = data_solo.split('-');
-				var data = data_separa[2]+'/'+data_separa[1]+'/'+data_separa[0];
-				var hora = data_cria_separa[1].replace('Z','');
-				if(conta_item == 1){
-					itens += '<div class="carousel-item'; if(i==0){itens += ' active'} itens +='"><div class="row">';
-				}
-
-				itens +=
-				'<div class="col-12 col-sm-4">'+
-				'<div class="card text-center">'+
-				'<div class="card-header">'+titulo+'</div>'+
-				'<div class="card-body">'+
-				'<p class="card-text">'+desc+'</p>'+
-				'<a href="'+link+'" class="btn btn-primary">Acessar</a>'+
-				'</div>'+
-				'<div class="card-footer text-muted">'+data+' '+hora+'</div>'+
-				'</div>'+
-				'</div>';
-
-				if(conta_item == 3){
-					itens += '</div></div>';
-					itens_indicadores += '<button type="button" data-bs-target="#githubLista" data-bs-slide-to="'+conta_indicadores+'"'; if(i==2){itens_indicadores += 'class="active"'} itens_indicadores += 'aria-current="true" aria-label="Slide '+conta_indicadores+'"></button>';
-					conta_indicadores++;
-				}
-				conta_item++;
-				if(conta_item > 3){
-					conta_item = 1;
-				}
-				indicadores.innerHTML = itens_indicadores;
-				gitLista.innerHTML = itens;
-				conta_repos++;
-			}
-			gitcont.innerHTML = conta_repos;
-		}
-	})
-	</script>
 	<script src="https://smtpjs.com/v3/smtp.js"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
 	<script src="assets/js/fontawesome.js"></script>
-
 </head>
 <body>
 	<div class="container" id="container">
@@ -419,11 +355,17 @@ var gameUrl = "assets/roms/zelda.smc";
 	<span class="topico">TECNOLOGIAS</span></br></br>
 
 	<h2 class="code-line" data-line-start=5 data-line-end=6 >
-		<a id="Linguagens_Dominiadas_5"></a>
-		Linguagens Dominiadas:<a onclick="show('linguagem')" class="ver">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="fa-solid fa-eye-slash"></i></a>
+		Linguagens mais Utilizadas :
 	</h2>
 
-	<div class="row" class="hid" id="linguagem">
+	<div class="row mb-3" id="linguagem_utilizada">
+
+	</div>
+	<h2 class="code-line" data-line-start=5 data-line-end=6 >
+		<a onclick="show('linguagem')" class="ver">Linguagens Dominiadas:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i id="i_linguagem" class="fa-solid fa-eye-slash"></i></a>
+	</h2>
+
+	<div class="row hid" id="linguagem">
 
 		<div class="col-2 card-left">
 			<b><img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&amp;logo=html5&amp;logoColor=white" alt="HTML5"></b>
@@ -526,116 +468,10 @@ var gameUrl = "assets/roms/zelda.smc";
 </br>
 <h2 class="code-line" data-line-start=5 data-line-end=6 >
 	<a id="Linguagens_Dominiadas_5"></a>
-	Linguagens mais Utilizadas :<a onclick="show('linguagem')" class="ver">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="fa-solid fa-eye-slash"></i></a>
+	<a onclick="show('bd')" class="ver">BD Aprendidos:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i id="i_bd" class="fa-solid fa-eye-slash"></i></a>
 </h2>
 
-<div class="row" class="hid" id="linguagem_utilizada">
-
-	<div class="col-2 card-left">
-		<b><img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&amp;logo=html5&amp;logoColor=white" alt="HTML5"></b>
-	</div>
-	<div class="col-9">
-		<p class="has-line-data" data-line-start="7" data-line-end="8">
-			<div class="progress">
-				<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 95%;"></div>
-			</div>
-		</p>
-	</div>
-	<div class="col-1 card-right">
-		95%
-	</div>
-
-	<div class="col-2 card-left">
-		<b><img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&amp;logo=css3&amp;logoColor=white" alt="CSS3"></b>
-	</div>
-	<div class="col-9">
-		<p class="has-line-data" data-line-start="7" data-line-end="8">
-			<div class="progress">
-				<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
-			</div>
-		</p>
-	</div>
-	<div class="col-1 card-right">
-		80%
-	</div>
-
-	<div class="col-2 card-left">
-		<b><img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&amp;logo=javascript&amp;logoColor=%23F7DF1E" alt="JavaScript"></td></b>
-	</div>
-	<div class="col-9">
-		<p class="has-line-data" data-line-start="7" data-line-end="8">
-			<div class="progress">
-				<div class="progress-bar progress-bar-striped progress-bar-animated bg-js" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
-			</div>
-		</p>
-	</div>
-	<div class="col-1 card-right">
-		75%
-	</div>
-
-	<div class="col-2 card-left">
-		<b><img src="https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&amp;logo=php&amp;logoColor=white" alt="PHP"></b>
-	</div>
-	<div class="col-9">
-		<p class="has-line-data" data-line-start="7" data-line-end="8">
-			<div class="progress">
-				<div class="progress-bar progress-bar-striped progress-bar-animated bg-php" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
-			</div>
-		</p>
-	</div>
-	<div class="col-1 card-right">
-		90%
-	</div>
-
-	<div class="col-2 card-left">
-		<b><img src="https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&amp;logo=c&amp;logoColor=white" alt="C"></b>
-	</div>
-	<div class="col-9">
-		<p class="has-line-data" data-line-start="7" data-line-end="8">
-			<div class="progress">
-				<div class="progress-bar progress-bar-striped progress-bar-animated bg-c" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
-			</div>
-		</p>
-	</div>
-	<div class="col-1 card-right">
-		25%
-	</div>
-
-	<div class="col-2 card-left">
-		<b><img src="https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&amp;logo=c-sharp&amp;logoColor=white" alt="C#"></b>
-	</div>
-	<div class="col-9">
-		<p class="has-line-data" data-line-start="7" data-line-end="8">
-			<div class="progress">
-				<div class="progress-bar progress-bar-striped progress-bar-animated bg-csharp" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 35%;"></div>
-			</div>
-		</p>
-	</div>
-	<div class="col-1 card-right">
-		35%
-	</div>
-
-	<div class="col-2 card-left">
-		<b><img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&amp;logo=java&amp;logoColor=white" alt="Java"></b>
-	</div>
-	<div class="col-9">
-		<p class="has-line-data" data-line-start="7" data-line-end="8">
-			<div class="progress">
-				<div class="progress-bar progress-bar-striped progress-bar-animated bg-java" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
-			</div>
-		</p>
-	</div>
-	<div class="col-1 card-right">
-		75%
-	</div>
-</div>
-</br>
-<h2 class="code-line" data-line-start=5 data-line-end=6 >
-	<a id="Linguagens_Dominiadas_5"></a>
-	BD Aprendidos:<a onclick="show('bd')" class="ver">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="fa-solid fa-eye-slash"></i></a>
-</h2>
-
-<div class="row" class="hid" id="bd">
+<div class="row hid" id="bd">
 
 	<div class="col-2 card-left">
 		<b><img src="https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&amp;logo=mysql&amp;logoColor=white" alt="MySQL"></b>
@@ -668,11 +504,10 @@ var gameUrl = "assets/roms/zelda.smc";
 
 </br>
 <h2 class="code-line" data-line-start=5 data-line-end=6 >
-	<a id="Linguagens_Dominiadas_5"></a>
-	Tecnologias Dominadas:<a onclick="show('tecnologia')" class="ver">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="fa-solid fa-eye-slash"></i></a>
+	<a onclick="show('tecnologia')" class="ver">Tecnologias Dominadas:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i id="i_tecnologia" class="fa-solid fa-eye-slash"></i></a>
 </h2>
 
-<div class="row" class="hid" id="tecnologia">
+<div class="row hid" id="tecnologia">
 
 	<div class="col-2 card-left">
 		<b><img src="https://img.shields.io/badge/apache-%23D42029.svg?style=for-the-badge&amp;logo=apache&amp;logoColor=white" alt="Apache"></b>
@@ -733,11 +568,10 @@ var gameUrl = "assets/roms/zelda.smc";
 
 </br>
 <h2 class="code-line" data-line-start=5 data-line-end=6 >
-	<a id="Linguagens_Dominiadas_5"></a>
-	S.O's Utilizados:<a onclick="show('so')" class="ver">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="fa-solid fa-eye-slash"></i></a>
+	<a onclick="show('so')" class="ver">S.O's Utilizados:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i id="i_so" class="fa-solid fa-eye-slash"></i></a>
 </h2>
 
-<div class="row" class="hid" id="so">
+<div class="row hid" id="so">
 
 	<div class="col-2 card-left">
 		<b><img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&amp;logo=windows&amp;logoColor=white" alt="Windows"></b>
@@ -840,11 +674,10 @@ var gameUrl = "assets/roms/zelda.smc";
 
 </br>
 <h2 class="code-line" data-line-start=5 data-line-end=6 >
-	<a id="Linguagens_Dominiadas_5"></a>
-	IDE's Utilizados:<a onclick="show('ide')" class="ver">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="fa-solid fa-eye-slash"></i></a>
+	<a onclick="show('ide')" class="ver">IDE's Utilizados:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i id="i_ide" class="fa-solid fa-eye-slash"></i></a>
 </h2>
 
-<div class="row" class="hid" id="ide">
+<div class="row hid" id="ide">
 	<div class="col-2 card-left">
 		<b><img src="https://img.shields.io/badge/Android%20Studio-3DDC84.svg?style=for-the-badge&amp;logo=android-studio&amp;logoColor=white" alt="Android Studio"></b>
 	</div>
@@ -946,11 +779,10 @@ var gameUrl = "assets/roms/zelda.smc";
 
 </br>
 <h2 class="code-line" data-line-start=5 data-line-end=6 >
-	<a id="Linguagens_Dominiadas_5"></a>
-	Ferramentas de Design:<a onclick="show('design')" class="ver">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="fa-solid fa-eye-slash"></i></a>
+	<a onclick="show('design')" class="ver">Ferramentas de Design:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i id="i_design" class="fa-solid fa-eye-slash"></i></a>
 </h2>
 
-<div class="row" class="hid" id="design">
+<div class="row hid" id="design">
 
 	<div class="col-2 card-left">
 		<b><img src="https://img.shields.io/badge/adobephotoshop-%2331A8FF.svg?style=for-the-badge&amp;logo=adobephotoshop&amp;logoColor=white" alt="Adobe Photoshop"></b>
@@ -1218,29 +1050,185 @@ function contato(){
 	contato_modal.toggle();
 }
 </script>
-<script type="text/javascript">
-function sendEmail() {
-	var email = document.getElementById('contato').value;
-	var nome = document.getElementById('nome').value;
-	var titulo = 'Contato de '+nome;
-	var mensagem = document.getElementById('mensagem').value;
-	Email.send({
-		SecureToken: 'fbeb429b-99d0-4697-a386-686cb1bb9605',
-		From: email,
-		To: 'kevencastilho10@gmail.com',
-		Body: mensagem,
-		Subject: titulo,
-	})
-	.then(function (message) {
-		alert("mail sent successfully")
-	});
+<script>
+function show(div){
+	var tecDiv = document.getElementById(div);
+	var iDiv = document.getElementById('i_'+div);
+	if(tecDiv.classList.contains("hid") == true){
+		tecDiv.classList.remove("hid");
+	} else {
+		tecDiv.classList.add("hid");
+	}
+	if(iDiv.classList.contains("fa-eye-slash") == true){
+		iDiv.classList.remove("fa-eye-slash");
+		iDiv.classList.add("fa-eye");
+	} else {
+		iDiv.classList.remove("fa-eye");
+		iDiv.classList.add("fa-eye-slash");
+	}
 }
 </script>
 <script>
-	function show(div){
-		var tecDiv = document.getElementById(div);
-		tecDiv.toggle("hid");
+var git;
+var linguagensLinksArray = new Array();
+var arrLinguagem = [];
+var arrAllLang = new Array();
+var arrAllLangLimpo = new Array();
+$.ajax({
+	url: 'https://api.github.com/users/KevenCastilho/repos',
+	beforeSend: function(xhr) {
+	}, success: function(jsonGit){
+		var tempArray;
+		var itens = '';
+		var itens_indicadores = '';
+
+		var titulo;
+		var desc;
+		var link;
+		var data_cria;
+
+		var conta_item = 1;
+		var conta_repos = 0;
+		var conta_indicadores = 0;
+
+		var repoLinguagem;
+
+		var gitLista = document.getElementById('gitLista');
+		var indicadores = document.getElementById('indicadores');
+		var gitcont = document.getElementById('gitcont');
+		for(var i = 0; i < jsonGit.length; i++){
+			tempArray = jsonGit[i];
+			titulo = tempArray['name'];
+			if(tempArray['description'] == null){
+				desc = 'Nenhuma descrição disponivel.'
+			} else {
+				desc = tempArray['description'];
+			}
+			link = tempArray['html_url'];
+			data_cria = tempArray['created_at'];
+			var data_cria_separa = data_cria.split('T');
+			var data_solo = data_cria_separa[0];
+			var data_separa = data_solo.split('-');
+			var data = data_separa[2]+'/'+data_separa[1]+'/'+data_separa[0];
+			var hora = data_cria_separa[1].replace('Z','');
+			var linguagens = String(tempArray['languages_url']);
+
+			linguagensLinksArray.push(linguagens);
+
+			if(conta_item == 1){
+				itens += '<div class="carousel-item'; if(i==0){itens += ' active'} itens +='"><div class="row">';
+			}
+
+			itens +=
+			'<div class="col-12 col-sm-4">'+
+			'<div class="card text-center">'+
+			'<div class="card-header">'+titulo+'</div>'+
+			'<div class="card-body">'+
+			'<p class="card-text">'+desc+'</p>'+
+			'<a href="'+link+'" class="btn btn-primary">Acessar</a>'+
+			'</div>'+
+			'<div class="card-footer text-muted">'+data+' '+hora+'</div>'+
+			'</div>'+
+			'</div>';
+
+			if(conta_item == 3){
+				itens += '</div></div>';
+				itens_indicadores += '<button type="button" data-bs-target="#githubLista" data-bs-slide-to="'+conta_indicadores+'"'; if(i==2){itens_indicadores += 'class="active"'} itens_indicadores += 'aria-current="true" aria-label="Slide '+conta_indicadores+'"></button>';
+				conta_indicadores++;
+			}
+			conta_item++;
+			if(conta_item > 3){
+				conta_item = 1;
+			}
+			indicadores.innerHTML = itens_indicadores;
+			gitLista.innerHTML = itens;
+			conta_repos++;
+		}
+		gitcont.innerHTML = conta_repos;
+		for(let i = 0; i < linguagensLinksArray.length; i++) {
+			var arr = linguagensLinksArray[i];
+			$.ajax({
+				url: arr,
+				beforeSend: function(xhr) {},
+				success: function(links){
+					arrLinguagem.push(links);
+					if(i == linguagensLinksArray.length-1){
+						var arrs = 0;
+						function isKeyExists(obj,key){
+							return key in obj;
+						}
+						function rodarArray(arr){
+							for(var j = 0; j < arr.length; j++){
+								var itemAtual = arr[j];
+								var Atual = Object.entries(itemAtual);
+								if(Atual.length > 0){
+									for(var k = 0; k < Atual.length; k++){
+										var subItem = Atual[k];
+										if(subItem.length > 0){
+											for(var l = 0; l < subItem.length; l++){
+												var sub = subItem[l];
+												var chave = Object.keys(sub);
+												var subCont = 1;
+												if(l == 0){
+													var iAtual = sub;
+												} else {
+													var iAtual = subItem[l-1];
+												}
+												if(l > 0){
+													var existeChave = iAtual in arrAllLang;
+													if(existeChave == true){
+														arrAllLang[iAtual] = arrAllLang[iAtual] + sub;
+													} else {
+														arrAllLang[iAtual] = sub;
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+						rodarArray(arrLinguagem);
+						arrAllLang = Object.keys(arrAllLang).map(lang => {
+							return {
+								lang,
+								value: arrAllLang[lang]
+							}
+						})
+						arrAllLang.sort((a,b) => b.value - a.value);
+						var divLinguagens = $('#linguagem_utilizada');
+						var htmlLinguagens = '';
+						var valores = 0;
+						arrAllLang.forEach(item => {
+							valores += item.value;
+						});
+						arrAllLang.forEach(item => {
+							var porcentagem = (item.value/valores)*100;
+							if(Math.floor(porcentagem) > 0){
+								// '<img src="https://img.shields.io/badge/'+item.lang+'-%23E34F26.svg?style=for-the-badge&amp;logo='+item.lang+'&amp;logoColor=white" alt="'+item.lang+'">'+
+								htmlLinguagens +=
+								'<div class="col-2 card-left">'+
+									'<span class="svg">'+item.lang+'</span>'+
+								'</div>'+
+								'<div class="col-9">'+
+									'<p class="has-line-data" data-line-start="7" data-line-end="8">'+
+										'<div class="progress">'+
+											'<div class="progress-bar progress-bar-striped progress-bar-animated bg-site" role="progressbar" aria-valuenow="'+porcentagem+'" aria-valuemin="0" aria-valuemax="100" style="width: '+porcentagem+'%;"></div>'+
+										'</div>'+
+									'</p>'+
+								'</div>'+
+								'<div class="col-1 card-right">'+
+								porcentagem.toFixed(2)+'%'+
+								'</div>';
+							}
+						});
+						divLinguagens.html(htmlLinguagens);
+					}
+				}
+			})
+		}
 	}
+})
 </script>
 </body>
 </html>
