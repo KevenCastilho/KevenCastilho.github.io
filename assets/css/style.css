@@ -36,6 +36,21 @@ a {
 	text-decoration: none !important;
 }
 
+.i_projetos{
+	width: 100%;
+	height: 100%;
+	border:0px #ffffff none;
+	margin: 0px !important;
+	padding: 0px !important;
+	position: absolute;
+	top: 0px;
+	left: 0px
+}
+
+.modal-iframe{
+	height: calc(74vh);
+}
+
 .navbar {
 	/* width: 80%; */
 	background-color: #202731 !important;
@@ -371,6 +386,10 @@ button.cert-link:hover {
 	margin-bottom: 0px !important;
 }
 
+.exp-link{
+	cursor: pointer !important;
+}
+
 ul.etc {
 	list-style: none;
 }
@@ -488,6 +507,73 @@ li.menu {
 .emu_img {
 	width: 640px !important;
 	height: 480px !important;
+}
+
+.card-text {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+}
+.card-header {
+	max-width: 500px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.gitcont {
+	font-family: cursive;
+}
+.bg-js {
+	background-color: #323330;
+}
+.bg-jquery {
+	background-color: #7ACEF4;
+}
+.bg-php{
+	background-color: #777bb4;
+}
+.bg-c{
+	background-color: #00599c;
+}
+.bg-csharp {
+	background-color: #239120;
+}
+.bg-java{
+	background-color: #ed8b00;
+}
+.bg-mysql{
+	background-color: #00758f;
+}
+.bg-firebird{
+	background-color: #621708;
+}
+.bg-site{
+	background-color: #439595;
+}
+.card-left{
+	line-height: 45px;
+}
+.card-right{
+	line-height: 45px;
+}
+.ver{
+	text-decoration: none;
+	color: #fff;
+}
+.ver:hover{
+	cursor: pointer;
+	color: #5CC4C4;
+}
+.hid{
+	display: none !important;
+}
+.svg {
+	padding: 5px 20px;
+	background-color: #439595;
+	font-family: monospace;
+	text-transform: initial;
 }
 
 @media (max-width: 767px) {
