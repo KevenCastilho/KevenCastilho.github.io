@@ -1,0 +1,11 @@
+{
+	"svn.ignoreMissingSvnWarning": true,
+	"html.format.wrapLineLength": 80,
+	"editor.defaultFormatter": "TabNine.tabnine-vscode",
+	"html.format.templating": true,
+	"html.format.wrapAttributes": "preserve-aligned",
+	"intelephense.format.braces": "k&r",
+	"editor.minimap.maxColumn": 80,
+	"html.format.enable": true,
+	"extension.as_loc_cnt": 80
+}
