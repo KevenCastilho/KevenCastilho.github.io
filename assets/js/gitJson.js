@@ -178,10 +178,10 @@ function destrinchaJson(arr,cmps,retorno){
 			arrObj.forEach(item => {
 				var porcentagem = (item.value/valores)*100;
 				tableLinguagens +=
-				'<tr>'+
+				'<tr class="table-active">'+
 					'<th class="table-active" scope="row">'+linhas+
-					'<td>'+item.lang+'</td>'+
-					'<td>'+item.value+'</td>'+
+					'<td class="table-active">'+item.lang+'</td>'+
+					'<td class="table-active">'+item.value+'</td>'+
 				'</tr>';
 				linhas++;
 				if(Math.floor(porcentagem) > 0){
