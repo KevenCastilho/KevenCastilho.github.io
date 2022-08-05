@@ -81,7 +81,7 @@
 					contagem = true;
 					setTimeout(function(){
 						span_mili.html(milisegundos);
-						if(milisegundos == 1000){
+						if((milisegundos += 5) == 1000){
 							milisegundos = 0;
 							segundos++;
 							span_sec.html(segundos);
@@ -98,7 +98,6 @@
 							span_hr.html(horas);
 							minutos = 0;
 						}
-						milisegundos++;
 						if(contagem == true){
 							contar();
 						}
