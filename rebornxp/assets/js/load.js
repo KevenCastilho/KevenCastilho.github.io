@@ -12,15 +12,9 @@ var scripts = [
   'assets/js/help.js',
   'assets/js/browser.js',
   'assets/js/Keven Castilho.js',
-  'assets/js/vscode.js',
   'assets/js/ps.js',
-  'assets/js/fo3radio.js',
-  'assets/js/mineroom.js',
   'assets/js/browserquest.js',
   'assets/js/paint.js',
-  'assets/js/discord.js',
-  'assets/js/skype.js',
-  'assets/js/whatsapp.js',
   'assets/js/arquivos.js',
   'assets/js/notepad.js',
   'assets/js/imageviewer.js',
@@ -32,7 +26,14 @@ var scripts = [
   'assets/js/lambda.js',
   'assets/js/minesweeper.js',
   'assets/js/appstore.js',
-  'assets/js/boot.js'
+  'assets/js/boot.js',
+//    NÃO FUNCIONAM
+//   'assets/js/skype.js',
+//   'assets/js/discord.js',
+//   'assets/js/fo3radio.js',
+//   'assets/js/mineroom.js',
+//   'assets/js/vscode.js',
+//   'assets/js/whatsapp.js',
 ];
 var stylesheets = [
   'assets/css/fonts.css',
