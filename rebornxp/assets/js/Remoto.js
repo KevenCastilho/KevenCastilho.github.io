@@ -572,25 +572,49 @@ $(function(){
 					var file = "";
 
 					switch(fileType) {
-						case 'odt':
 						case 'doc':
-						case 'docx':
-						case "docm":
-						case "dotx":
-						case "dotm":
+						case "txt":
 						case "odt":
-						case "xlsx":
-						case "xlsm":
-						case "xltx":
-						case "xltm":
-						case "xlsb":
-						case "xlam":
+						case "docx":
 						case "xls":
-							file = $('<li class="files"><a href="https://docs.google.com/gview?url=' + urlAtual + nomeArquivo + '&amp;embedded=true" title="' + nomeArquivo + '" class="files">' + icon + '</br><center><span class="name">' + name + '</span></center></a></li>');
+						case "ods":
+						case "xlsx":
+						case "csv":
+						case "pptx":
+						case "pdf":
+						case "xml":
+							file = $('<li class="files"><a data-fancybox data-type="iframe" data-src="https://docs.google.com/gview?url=' + urlAtual + '&amp;embedded=true" title="' + nomeArquivo + '" href="javascript:;" class="files">' + icon + '</br><center><span class="name">' + name + '</span></center></a></li>');
 						break;
 
+						case "jpg":
+						case "jpeg":
+						case "png":
+						case "bmp":
+						case "gif":
+						case "ico":
+						case "svg":
+							file = $('<li class="files"><a data-fancybox data-fancybox="images" href="' + urlAtual + '" title="' + nomeArquivo + '" href="javascript:;" class="files">' + icon + '</br><center><span class="name">' + name + '</span></center></a></li>');
+							break;
+
+						case "avi":
+						case "mpeg":
+						case "mov":
+						case "mkv":
+						case "mp4":
+						case "mp3":
+						case "wma":
+						case "aac":
+						case "ogg":
+						case "wave":
+						case "wav":
+						case "mdi":
+						case "mid":
+						case "midi":
+							file = $('<li class="files"><a data-fancybox data-type="iframe" href="' + urlAtual + '" title="' + nomeArquivo + '" href="javascript:;" class="files">' + icon + '</br><center><span class="name">' + name + '</span></center></a></li>');
+							break;
+
 						default:
-							file = $('<li class="files"><a href="' + urlAtual + '" title="' + nomeArquivo + '" class="files">' + icon + '</br><center><span class="name">' + name + '</span></center></a></li>')
+							file = $('<li class="files"><a href="' + urlAtual + '" title="' + nomeArquivo + '" class="files" download="' + nomeArquivo + '">' + icon + '</br><center><span class="name">' + name + '</span></center></a></li>')
 						break;
 					}
 					

@@ -245,7 +245,7 @@
 	line-height: 11.4em;
 }
 .filemanager .nothingfound .nofiles:after {
-	content: 'Ã';
+	content: '';
 	position: absolute;
 	color: #ffffff;
 	font-size: 14em;
@@ -254,7 +254,7 @@
 }
 
 .filemanager .nothingfound span {
-	margin: 0 auto auto 6.8em;
+	margin: 0 auto auto 2em;
 	color: #ffffff;
 	font-size: 16px;
 	font-weight: 700;

@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="pt-br">
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1, maximum-scale=1">
 	<title>Remoto - Arquivos</title>
 	<script src="assets/js/jquery-3.2.1.js"></script>
 	<script src="assets/js/interact.min.js"></script>
-	<link href="assets/css/bootstrap.min.css" rel="stylesheet" >
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+	<link rel="stylesheet" href="assets/css/jquery.fancybox.min.css" />
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://unpkg.com/xp.css" />
 	<link rel="stylesheet" href="https://botoxparty.github.io/XP.css/docs.css" />
-	<link href="assets/css/Remoto.css" rel="stylesheet"/>
+	<link id="onyx-css" href="assets/css/style.css" rel="stylesheet">
+	<link href="assets/css/Remoto.css" rel="stylesheet" />
+	<link id="dropzone-css" href="assets/css/dropzone.css" rel="stylesheet">
 	<style>
 		body {
 			overflow: hidden;
 		}
+
 		ul {
-			padding-left:0px ;
+			padding-left: 0px;
 		}
+
 		.breadcrumbs {
 			padding: 3px 4px;
 			border: 1px solid #7f9db9;
@@ -31,7 +39,7 @@
 		}
 
 		aside {
-			padding:0px;
+			padding: 0px;
 			position: unset;
 			width: 100%;
 			height: calc(100%);
@@ -39,28 +47,37 @@
 		}
 	</style>
 </head>
+
 <body>
-	<div class="container-fluid min-vh-100 d-flex flex-column g-0">
-	<div class="row g-0 mt-2 mx-1" id="topBar">
-		<div class="col-1 d-flex justify-content-end mx-2">Local</div>
-		<div class="col-8">
-			<div class="row g-1">
-				<div class="col-11">
-					<div class="breadcrumbs">
-					
+	<form action="file-upload.php" class="dropzone container-fluid d-flex flex-column g-0 files-container dz-clickable" style="min-height: 96.5vh !important;">
+		<div class="row g-0 mt-2 mx-1" id="topBar">
+			<div class="col-1 d-flex justify-content-end mx-2">Local</div>
+			<div class="col-8">
+				<div class="row g-1">
+					<div class="col-11">
+						<div class="breadcrumbs">
+
+						</div>
+					</div>
+					<div class="col-1">
+						<button class="mx-2" type="button"
+								style="all: unset; cursor: pointer;"><img
+								 src="assets/imagens/icons/mfc90.dll_14_17100.ico"
+								 width="20px" height="20px" /></button>
 					</div>
 				</div>
-				<div class="col-1">
-					<button class="mx-2" type="button" style="all: unset; cursor: pointer;"><img src="assets/imagens/icons/mfc90.dll_14_17100.ico" width="20px" height="20px" /></button>
-				</div>
+			</div>
+			<div class="col mx-1 d-flex" id="search">
+				<button class="mx-2" type="button"
+						style="all: unset; cursor: pointer;"><img
+						 src="assets/imagens/icons/shell32.dll_14_23.ico"
+						 width="20px" height="20px" /></button>
+				<input type="search" class="search"
+					   placeholder="Procurar arquivo/pasta..."
+					   style="width:100%" />
 			</div>
 		</div>
-		<div class="col mx-1 d-flex" id="search">
-				<button class="mx-2" type="button" style="all: unset; cursor: pointer;"><img src="assets/imagens/icons/shell32.dll_14_23.ico" width="20px" height="20px" /></button>
-				<input type="search" class="search" placeholder="Procurar arquivo/pasta..." style="width:100%" />
-		</div>
-	</div>
-	<div class="row g-1 flex-grow-1 mb-3" style="
+		<div id="arquivos" class="row g-1 flex-grow-1 mb-3" style="
     background-color: #fff;
     margin-top: 8px;
     margin-left: 3px;
@@ -68,31 +85,58 @@
     margin-right: 3px !important;
     border: 1px solid #7f9db9;
 ">
-		<div class="col-12" style="overflow: auto;">
-			<div class="filemanager">
-				<ul class="data"></ul>
-				<div class="nothingfound">
-					<div class="nofiles"></div>
-					<span>No files here.</span>
+			<div class="col-12" class="fallback" style="overflow: auto; max-height: 90.5vh">
+				<input name="file" type="file" multiple class="visually-hidden" />
+				<div class="filemanager" style="max-height: 90.5vh;">
+					<ul class="data"></ul>
+					<div class="nothingfound">
+						<div class="nofiles"></div>
+						<span>Nenhum arquivo encontrado.</span>
+					</div>
 				</div>
 			</div>
 		</div>
+		<input type="file" multiple="multiple" class="dz-hidden-input" accept="image/*,application/pdf,.doc,.docx,.xls,.xlsx,.csv,.tsv,.ppt,.pptx,.pages,.odt,.rtf" style="visibility: hidden; position: absolute; top: 0px; left: 0px; height: 0px; width: 0px;">
+		<
+		</form>
+		<div class="status-bar">
+			<p class="status-bar-field"><b>Solte os arquivos na parte <u>BRANCA</u> para fazer upload</b></p>
+			<p class="status-bar-field"><b>Tamanho Maximo</b> &nbsp; 20.0 MiB</p>
+			<p class="status-bar-field"><b>Quantidade limite por envio</b> &nbsp; 9.999.999.999</p>
+			<p class="status-bar-field"><b>Envio</b> <progress class="envio" max="100" value="0"></progress></p>
+			<p class="status-bar-field"><b>Arquivos Enviados</b>&nbsp;(<span id="uploaded-files-count" class="uploaded-files-count">0</span>)</p>
+		</div>
 	</div>
-	<div class="status-bar">
-		<p class="status-bar-field">Press F1 for help</p>
-		<p class="status-bar-field">Slide 1</p>
-		<p class="status-bar-field">CPU Usage: 14%</p>
-	</div>
-	</div>
-	
+
 	<!-- Include our script files -->
 	<script src="assets/js/jquery-1.11.0.min.js"></script>
 	<script src="assets/js/Remoto.js"></script>
 	<div id="janelas">
 
 	</div>
+			<!-- JQuery -->
+		<!-- <script src="assets/js/jquery-1.10.2.min.js"></script> -->
+
+		<!-- Dropzone JS -->
+		<script src="assets/js/dropzone.min.js"></script>
+
+		<!-- Main JS file -->
+		<script src="assets/js/scripts.js"></script>
+		<script src="assets/fancybox-master/dist/jquery.fancybox.js"></script>
+		<script>
+			$('.fancybox-media').fancybox({
+				type: 'iframe',
+				width: 800,
+				height: 580,
+				// add
+				fitToView: false,
+				iframe: {
+					preload: false
+				}
+			});
+		</script>
 	<script>
-	const position = { x: 0, y: 0 }
+		const position = { x: 0, y: 0 }
 
 		interact('.draggable').draggable({
 			listeners: {
@@ -110,4 +154,5 @@
 		})
 	</script>
 </body>
+
 </html>
