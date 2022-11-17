@@ -77,15 +77,27 @@
 					   style="width:100%" />
 			</div>
 		</div>
-		<div id="arquivos" class="row g-1 flex-grow-1 mb-3" style="
-    background-color: #fff;
-    margin-top: 8px;
-    margin-left: 3px;
-    margin-bottom: -1px !important;
-    margin-right: 3px !important;
-    border: 1px solid #7f9db9;
-">
-			<div class="col-12" class="fallback" style="overflow: auto; max-height: 90.5vh">
+		<div class="row g-0 flex-grow-1 mb-3" style="margin-top: 8px;margin-left: 3px;margin-bottom: -1px !important;margin-right: 3px !important;">
+			<div class="col-2 mx-2" style="overflow: auto; max-height: 90.5vh;background-color: #fff;border: 1px solid #7f9db9;">
+				<ul class="tree-view">
+					<li>
+						<details>
+							<summary>/</summary>
+							<ul>
+								<li>
+									<details>
+										<summary>JavaScript</summary>
+										<ul>
+								
+										</ul>
+									</details>
+								</li>
+							</ul>
+						</details>
+					</li>
+				</ul>
+			</div>
+			<div class="col" id="arquivos" class="fallback" style="overflow: auto; max-height: 90.5vh;background-color: #fff;border: 1px solid #7f9db9;" >
 				<input name="file" type="file" multiple class="visually-hidden" />
 				<div class="filemanager" style="max-height: 90.5vh;">
 					<ul class="data"></ul>
@@ -97,7 +109,26 @@
 			</div>
 		</div>
 		<input type="file" multiple="multiple" class="dz-hidden-input" accept="image/*,application/pdf,.doc,.docx,.xls,.xlsx,.csv,.tsv,.ppt,.pptx,.pages,.odt,.rtf" style="visibility: hidden; position: absolute; top: 0px; left: 0px; height: 0px; width: 0px;">
-		<
+		<div id="aviso">
+			<div id="window" class="window" style="width: 300px;position: absolute;top: 40%;left: 50%;z-index: 2;">
+				<div class="title-bar">
+					<div class="title-bar-text" id="titulo">
+						<div><img src="assets/imagens/icons/erro.ico" width="16px" height="16px" /> &nbsp; <span style="color: #fff" data-dz-name></span></div>
+					</div>
+					<div class="title-bar-controls">
+						<button type="button" onclick="delWindow()" aria-label="Close"></button>
+					</div>
+				</div>
+				<div class="window-body" id="corpo">
+					<div class="dz-error-message"><span data-dz-errormessage></span></div>
+					<div class="dz-message"></div>
+					<center><button type="button" onclick="delWindow()">Okay</button></center>
+					<div id="warnings">
+						<span>Warnings will go here!</span>
+					</div>
+				</div>
+			</div>
+		</div>
 		</form>
 		<div class="status-bar">
 			<p class="status-bar-field"><b>Solte os arquivos na parte <u>BRANCA</u> para fazer upload</b></p>
@@ -111,9 +142,6 @@
 	<!-- Include our script files -->
 	<script src="assets/js/jquery-1.11.0.min.js"></script>
 	<script src="assets/js/Remoto.js"></script>
-	<div id="janelas">
-
-	</div>
 			<!-- JQuery -->
 		<!-- <script src="assets/js/jquery-1.10.2.min.js"></script> -->
 
@@ -134,25 +162,11 @@
 					preload: false
 				}
 			});
-		</script>
-	<script>
-		const position = { x: 0, y: 0 }
 
-		interact('.draggable').draggable({
-			listeners: {
-				start(event) {
-					console.log(event.type, event.target)
-				},
-				move(event) {
-					position.x += event.dx
-					position.y += event.dy
-
-					event.target.style.transform =
-						`translate(${position.x}px, ${position.y}px)`
-				},
+			function delWindow() {
+				$('.window.dz-error').remove();
 			}
-		})
-	</script>
+		</script>
 </body>
 
 </html>

@@ -600,3 +600,60 @@ footer #tzine-actions iframe{
   /* This makes things *much* easier */
   box-sizing: border-box;
 }
+
+ul.tree-view details[open]>summary:before {
+	content: " ";
+	background-image: url('../imagens/icons/Folder-Opened.png');
+	background-size: 16px 16px;
+}
+
+ul.tree-view details>summary:before {
+	text-align: center;
+	display: block;
+	float: left;
+	content: " ";
+	background-image: url('../imagens/icons/Folder-Closed.png');
+	background-size: 16px 16px;
+	border: unset;
+	width: 16px;
+	height: 16px;
+	line-height: 9px;
+	margin-right: 5px;
+	padding-left: 1px;
+	background-color: #fff;
+}
+
+ul.tree-view {
+	-webkit-font-smoothing: auto;
+	border: unset;
+	padding: 2px 5px;
+}
+
+ul.tree-view ul {
+	margin-top: 3px;
+	margin-left: 24px;
+	padding-left: 11px;
+	border-left: 1px dotted grey;
+}
+
+ul.tree-view ul>li:before {
+	content: "";
+	display: block;
+	position: absolute;
+	left: -6px;
+	top: 8px;
+	width: 12px;
+	border-bottom: 1px dotted grey;
+}
+ 
+.arvore {
+	overflow: auto;
+	max-height: 90.5vh;
+	background-color: #fff;
+	border: 1px solid #7f9db9;
+	max-width: 100vw !important;
+	overflow-x: auto;
+	overflow-y: auto;
+	display: inline-block;
+	white-space: nowrap;
+}

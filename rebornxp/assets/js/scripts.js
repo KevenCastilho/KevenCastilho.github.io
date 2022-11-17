@@ -53,13 +53,16 @@ Version: 1.0
 				base.initFileUploader(base, 'form.dropzone');
             },
             initFileUploader: function (base, target) {
-                var previewNode = document.querySelector('#onyx-dropzone-template'), // Dropzone template holder
+				var previewNode = document.querySelector('#aviso'), // Dropzone template holder
                     warningsHolder = $('#warnings'); // Warning messages' holder
 
                 // previewNode.id = '';
 
-                // var previewTemplate = previewNode.parentNode.innerHTML;
+                var previewTemplate = previewNode.innerHTML;
                 // previewNode.parentNode.removeChild(previewNode);
+				// previewNode.style.display = 'none';
+				document.getElementById('window').style.display = 'none';
+				// previewNode.innerHTML = '';
 
                 var onyxDropzone = new Dropzone(target, {
                     url: $(target).attr('action') ? $(target).attr('action') : 'file-upload.php', // Check that our form has an action attr and if not, set one here
@@ -67,8 +70,8 @@ Version: 1.0
                     maxFilesize: 20,
                     // acceptedFiles:
                     //     '*',
-                    // previewTemplate: previewTemplate,
-                    // previewsContainer: '#previews',
+					previewTemplate: previewTemplate,
+                    previewsContainer: '#aviso',
                     clickable: true,
 
                     createImageThumbnails: true,
@@ -129,7 +132,7 @@ Version: 1.0
                      * Displayed if `maxFiles` is st and exceeded.
                      * The string `{{maxFiles}}` will be replaced by the configuration value.
                      */
-					dictMaxFilesExceeded: 'VocÊ não pode enviar mais arquivos.', // Default: You can not upload any more files.
+					dictMaxFilesExceeded: 'Você não pode enviar mais arquivos.', // Default: You can not upload any more files.
 
                     /**
                      * Allows you to translate the different units. Starting with `tb` for terabytes and going down to
@@ -199,7 +202,7 @@ Version: 1.0
 					}
 					$('#uploaded-files-count').html(arquivos);
 					$('.uploaded-files-count').html(arquivos);
-                    let parsedResponse = JSON.parse(response);
+					let parsedResponse = JSON.parse(response);
                     file.upload_ticket = parsedResponse.file_link;
                     // Make it wait a little bit to take the new element
                     setTimeout(function () {
