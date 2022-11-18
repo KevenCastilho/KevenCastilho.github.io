@@ -146,10 +146,12 @@ Version: 1.0
                 onyxDropzone.on('addedfile', function (file) {
                     $('.preview-container').css('visibility', 'visible');
                     file.previewElement.classList.add('type-' + base.fileType(file.name)); // Add type class for this element's preview
+					$('.window.dz-success').remove();
                 });
 
                 onyxDropzone.on('totaluploadprogress', function (progress) {
 					// var progr = document.querySelector('.envio');
+					$('.window.dz-success').remove();
 					var progr = $('.envio');
 
                     if (progr.length){
@@ -161,19 +163,23 @@ Version: 1.0
 
                 onyxDropzone.on('dragenter', function () {
                     $(target).addClass('hover');
+					$('.window.dz-success').remove();
                 });
 
                 onyxDropzone.on('dragleave', function () {
                     $(target).removeClass('hover');
+					$('.window.dz-success').remove();
                 });
 
                 onyxDropzone.on('drop', function () {
                     $(target).removeClass('hover');
+					$('.window.dz-success').remove();
                 });
 
                 onyxDropzone.on('addedfile', function () {
                     // Remove no files notice
                     $('.no-files-uploaded').slideUp('easeInExpo');
+					$('.window.dz-success').remove();
                 });
 
                 onyxDropzone.on('removedfile', function (file) {
@@ -186,14 +192,20 @@ Version: 1.0
                         }
                     });
 
+					$('.window.dz-success').remove();
+
                     // Show no files notice
                     if (base.dropzoneCount() == 0) {
                         $('.no-files-uploaded').slideDown('easeInExpo');
                         $('.uploaded-files-count').html(base.dropzoneCount());
                     }
                 });
-
+				onyxDropzone.on('sending', function (file, xhr, formData){
+					var caminho = window.location.hash;
+					formData.append("caminho", window.location.hash);
+				})
                 onyxDropzone.on('success', function (file, response) {
+					$('.window.dz-success').remove();
 					arquivos++;
 					var progr = $('.envio');
 

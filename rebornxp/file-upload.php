@@ -20,9 +20,11 @@ if ( isset($_POST['delete_file']) ) {
     $delete_file = $_POST['delete_file'];
 }
 
+$caminho = str_replace('%2F','/',str_replace('#' . $nome_pasta . '%2F', '', $_POST['caminho']));
+
 // $targetPath = dirname( __FILE__ ) . '/arquivos' . $nome_pasta . '/';
 $link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'];
-$targetPath = '/home/vol2_3/epizy.com/epiz_28273216/htdocs/rebornxp/' . $nome_pasta . '/';
+$targetPath = '/home/vol2_3/epizy.com/epiz_28273216/htdocs/rebornxp/' . $nome_pasta . '/' . $caminho . '/';
 // Check if it's an upload or delete and if there is a file in the form
 if ( !empty($_FILES) && $delete_file == 0 ) {
 
@@ -49,7 +51,7 @@ if ( !empty($_FILES) && $delete_file == 0 ) {
                if ( file_exists($targetFile) ) {
                     $response = array (
                         'status'    => 'success',
-                        'info'      => 'Seu arquivo foi carregado com sucesso.',
+                        'info'      => 'Seu arquivo foi carregado com sucesso. ',
                         'file_link' => $targetFile
                     );
                 } else {
