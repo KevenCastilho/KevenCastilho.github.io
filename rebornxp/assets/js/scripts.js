@@ -215,6 +215,7 @@ Version: 1.0
 					$('#uploaded-files-count').html(arquivos);
 					$('.uploaded-files-count').html(arquivos);
 					let parsedResponse = JSON.parse(response);
+					load_js();
                     file.upload_ticket = parsedResponse.file_link;
                     // Make it wait a little bit to take the new element
                     setTimeout(function () {
